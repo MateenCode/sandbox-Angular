@@ -10,7 +10,8 @@ export class UsersComponent implements OnInit {
   users: User[];
   showExtended: boolean = true;
   loading: boolean = false;
-  enableAdd: boolean = true;
+  enableAdd: boolean = false;
+  currentClasses = {};
 
   constructor() {}
 
@@ -20,13 +21,14 @@ export class UsersComponent implements OnInit {
         firstName: "John",
         lastName: "Doe",
         email: "john@gmail.com",
-        age: 32,
+        age: 72,
         address: {
           street: "50 main st",
           city: "Los Angeles",
           state: "CA"
         },
-        image: "http://lorempixel.com/600/600/people/3"
+        image: "http://lorempixel.com/600/600/people/3",
+        isActive: true
       },
       {
         firstName: "Jimmy",
@@ -38,7 +40,8 @@ export class UsersComponent implements OnInit {
           city: "Sunnyvale",
           state: "CA"
         },
-        image: "http://lorempixel.com/600/600/people/2"
+        image: "http://lorempixel.com/600/600/people/2",
+        isActive: false
       },
       {
         firstName: "Jenny",
@@ -50,7 +53,8 @@ export class UsersComponent implements OnInit {
           city: "Atlanta",
           state: "GA"
         },
-        image: "http://lorempixel.com/600/600/people/1"
+        image: "http://lorempixel.com/600/600/people/1",
+        isActive: true
       }
     ];
     this.loading = true;
@@ -60,8 +64,15 @@ export class UsersComponent implements OnInit {
     //   lastName: "kendey",
     //   email: "david@gmail.com"
     // });
+    this.setCurrentClasses();
   }
   // addUser(user: User) {
   //   this.users.push(user);
   // }
+
+  setCurrentClasses() {
+    this.currentClasses = {
+      "btn-success btn-outline-light ": this.enableAdd
+    };
+  }
 }
