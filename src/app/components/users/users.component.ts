@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+
 import { User } from "../../models/User";
 
 @Component({
@@ -9,9 +10,8 @@ import { User } from "../../models/User";
 export class UsersComponent implements OnInit {
   users: User[];
   showExtended: boolean = true;
-  loading: boolean = false;
-  enableAdd: boolean = false;
-  currentClasses = {};
+  loaded: boolean = false;
+  enableAdd: boolean = true;
 
   constructor() {}
 
@@ -20,59 +20,45 @@ export class UsersComponent implements OnInit {
       {
         firstName: "John",
         lastName: "Doe",
-        email: "john@gmail.com",
-        age: 72,
+        age: 70,
         address: {
-          street: "50 main st",
-          city: "Los Angeles",
-          state: "CA"
+          street: "50 Main st",
+          city: "Boston",
+          state: "MA"
         },
-        image: "http://lorempixel.com/600/600/people/3",
-        isActive: true
+        isActive: true,
+        registered: new Date("01/02/2018 08:30:00")
       },
       {
-        firstName: "Jimmy",
-        lastName: "foe",
-        email: "Jimmy@gmail.com",
-        age: 32,
+        firstName: "Kevin",
+        lastName: "Johnson",
+        age: 34,
         address: {
-          street: "22 jump st",
-          city: "Sunnyvale",
-          state: "CA"
+          street: "20 School st",
+          city: "Lynn",
+          state: "MA"
         },
-        image: "http://lorempixel.com/600/600/people/2",
-        isActive: false
+        isActive: false,
+        registered: new Date("03/11/2017 06:20:00")
       },
       {
-        firstName: "Jenny",
-        lastName: "hoe",
-        email: "Jenny@gmail.com",
-        age: 24,
+        firstName: "Karen",
+        lastName: "Williams",
+        age: 26,
         address: {
-          street: "16 peep st",
-          city: "Atlanta",
-          state: "GA"
+          street: "55 Mill st",
+          city: "Miami",
+          state: "FL"
         },
-        image: "http://lorempixel.com/600/600/people/1",
-        isActive: true
+        isActive: true,
+        registered: new Date("11/02/2016 10:30:00")
       }
     ];
-    this.loading = true;
 
-    // this.addUser({
-    //   firstName: "david",
-    //   lastName: "kendey",
-    //   email: "david@gmail.com"
-    // });
-    this.setCurrentClasses();
+    this.loaded = true;
   }
-  // addUser(user: User) {
-  //   this.users.push(user);
-  // }
 
-  setCurrentClasses() {
-    this.currentClasses = {
-      "btn-success btn-outline-light ": this.enableAdd
-    };
+  addUser(user: User) {
+    this.users.push(user);
   }
 }
