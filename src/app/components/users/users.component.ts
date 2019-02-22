@@ -1,64 +1,53 @@
-import { Component, OnInit } from "@angular/core";
-
-import { User } from "../../models/User";
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { UserService } from '../../services/user.service';
+import { User } from '../../models/User'; 
 
 @Component({
-  selector: "app-users",
-  templateUrl: "./users.component.html",
-  styleUrls: ["./users.component.css"]
+  selector: 'app-users',
+  templateUrl: './users.component.html',
+  styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
+  user: User = {
+    firstName: '',
+    lastName: '',
+    email: ''
+  }
   users: User[];
   showExtended: boolean = true;
   loaded: boolean = false;
-  enableAdd: boolean = true;
+  enableAdd: boolean = false;
+  showUserForm: boolean = false;
+  @ViewChild('userForm') form: any;
+  data: any;
 
-  constructor() {}
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
-    this.users = [
-      {
-        firstName: "John",
-        lastName: "Doe",
-        age: 70,
-        address: {
-          street: "50 Main st",
-          city: "Boston",
-          state: "MA"
-        },
-        isActive: true,
-        registered: new Date("01/02/2018 08:30:00")
-      },
-      {
-        firstName: "Kevin",
-        lastName: "Johnson",
-        age: 34,
-        address: {
-          street: "20 School st",
-          city: "Lynn",
-          state: "MA"
-        },
-        isActive: false,
-        registered: new Date("03/11/2017 06:20:00")
-      },
-      {
-        firstName: "Karen",
-        lastName: "Williams",
-        age: 26,
-        address: {
-          street: "55 Mill st",
-          city: "Miami",
-          state: "FL"
-        },
-        isActive: true,
-        registered: new Date("11/02/2016 10:30:00")
-      }
-    ];
+      this.userService.getData().subscribe(data => {
+        console.log(data);
+      });
+   
+      this.userService.getUsers().subscribe(users => {
+        this.users = users;
+        this.loaded = true;
+      });
 
-    this.loaded = true;
   }
 
-  addUser(user: User) {
-    this.users.push(user);
+  onSubmit({value, valid}: {value: User, valid: boolean}) {
+    if(!valid){
+      console.log('Form is not valid');
+    } else {
+      value.isActive = true;
+      value.registered = new Date();
+      value.hide = true;
+
+      this.userService.addUser(value);
+
+      this.form.reset();
+    }
   }
+
+  
 }
