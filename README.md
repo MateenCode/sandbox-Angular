@@ -1,27 +1,10 @@
-# SandboxAngular
+# AngularSandBox
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.3.
+App that has no real purpose but covers all basic concepts of angular created to for personal reference
 
-## Development server
+# ScreenShot
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+<img width="1210" alt="screen shot 2019-02-21 at 4 34 06 pm" src="https://user-images.githubusercontent.com/28902787/53211662-e31bfd00-35f6-11e9-9f8c-2f8c246de86c.png">
+<img width="1182" alt="screen shot 2019-02-21 at 4 34 25 pm" src="https://user-images.githubusercontent.com/28902787/53211665-e616ed80-35f6-11e9-9fdf-037ca734f271.png">
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+**[View Live](http://fivedayforecasts.surge.sh/)**
